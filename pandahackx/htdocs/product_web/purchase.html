@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SILO- Climate Data Visulization Tool</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/one-page-wonder.css" rel="stylesheet">
+
+  <script src="https://apis.google.com/js/platform.js" async defer>
+    {
+      parsetags: 'explicit'
+    }
+  </script>
+  <script>
+    function validateForm() {
+      var name = document.forms["test"]["name"].value;
+      if (name == "") {
+        alert("Name must be filled out");
+        return false;
+      } else if (name.length > 50) {
+        alert("Name cannot be more than 50 characters");
+        return false;
+      } else if (/[^a-zA-Z0-9\-]/.test(name)) {
+        alert("Name can only contain alphanumeric characters and hypehns(-)")
+        return false;
+      }
+
+      var gender = document.forms["test"]["gender"].value;
+      if (gender == "") {
+        alert("Gender must be choosed");
+        return false;
+      }
+      var email = document.forms["test"]["email"].value;
+      if (email == "") {
+        alert("Email must be filled out");
+        return false;
+      }
+
+      var atpos = email.indexOf("@");
+      var dotpos = email.lastIndexOf(".");
+      if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
+        alert("Not a valid e-mail address");
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body class=purchase>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/product_web/index.php">SILO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/product_web/index.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/product_web/statistics.php">Statistic</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="form">
+
+    <h1>Register for an Early Release Special Offer</h1>
+    <br>
+    <h5><span class="error">* required field.</span></h5>
+    <br><br>
+    <form name="test" action="dbconn.php" onsubmit="return validateForm()" method="post">
+      Name:
+      <br>
+      <input type="text" name="name">
+      <span class="error">* </span>
+      <br><br> Age:
+      <select name="age">
+    <option value="Under18">Under18</option>
+    <option value="18-30">18-30</option>
+    <option value="31-45">31-45</option>
+    <option value="46-65">46-65</option>
+    <option value="over65">over65</option>
+  </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gender:
+
+      <input type="radio" name="gender" value="female">Female
+      <input type="radio" name="gender" value="male">Male
+      <span class="error">*</span>
+      <br><br> Job:
+      <select name="job">
+    <option value="AgriculturalIndustry">Agricultural Industry</option>
+    <option value="Consultant">Consultant</option>
+    <option value="Researcher">Researcher</option>
+    <option value="School&University">School&University</option>
+    <option value="CasualUser">Casual User</option>
+  </select>
+      <br><br> E-mail:
+      <br>
+      <input type="text" name="email">
+      <span class="error">* </span>
+      <br><br> Comment:
+      <br>
+      <textarea name="comment" rows="5" cols="40"></textarea>
+      <br><br>
+      <div class=sub>
+        <input type="submit" name="submit" formaction="statistics.php" value="Submit">
+      </div>
+    </form>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Panda Hack X 2017</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
